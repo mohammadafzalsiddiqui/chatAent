@@ -8,32 +8,30 @@ export function IntermediateStep(props: { message: Message }) {
 	const [expanded, setExpanded] = useState(false)
 	return (
 		<div
-			className={`ml-auto bg-green-600 rounded px-4 py-2 max-w-[80%] mb-8 whitespace-pre-wrap flex flex-col cursor-pointer`}
+			className={`ml-auto bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl px-4 py-3 max-w-[80%] mb-6 whitespace-pre-wrap flex flex-col shadow-md`}
 		>
 			<div className={`text-right ${expanded ? "w-full" : ""}`} onClick={(e) => setExpanded(!expanded)}>
-				<code className="mr-2 bg-slate-600 px-2 py-1 rounded hover:text-blue-600">
+				<code className="mr-2 bg-slate-700 px-3 py-1 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer">
 					🛠 <b>{action.name}</b>
 				</code>
-				<span className={expanded ? "hidden" : ""}>🔽</span>
-				<span className={expanded ? "" : "hidden"}>🔼</span>
+				<span className={`${expanded ? "hidden" : ""} text-lg ml-1`}>🔽</span>
+				<span className={`${expanded ? "" : "hidden"} text-lg ml-1`}>🔼</span>
 			</div>
 			<div
-				className={`overflow-hidden max-h-[0px] transition-[max-height] ease-in-out ${expanded ? "max-h-[360px]" : ""}`}
+				className={`overflow-hidden max-h-[0px] transition-[max-height] duration-500 ease-in-out ${expanded ? "max-h-[360px]" : ""}`}
 			>
 				<div
-					className={`bg-slate-600 rounded p-4 mt-1 max-w-0 ${expanded ? "max-w-full" : "transition-[max-width] delay-100"}`}
+					className={`bg-slate-700 rounded-lg p-4 mt-2 max-w-0 ${expanded ? "max-w-full" : "transition-[max-width] delay-100"}`}
 				>
 					<code
 						className={`opacity-0 max-h-[100px] overflow-auto transition ease-in-out delay-150 ${expanded ? "opacity-100" : ""}`}
 					>
-						Tool Input:
-						<br></br>
-						<br></br>
+						<div className="text-sm font-bold mb-2">Tool Input:</div>
 						{JSON.stringify(action.args)}
 					</code>
 				</div>
 				<div
-					className={`bg-slate-600 rounded p-4 mt-1 max-w-0 ${expanded ? "max-w-full" : "transition-[max-width] delay-100"}`}
+					className={`bg-slate-700 rounded-lg p-4 mt-2 max-w-0 ${expanded ? "max-w-full" : "transition-[max-width] delay-100"}`}
 				>
 					<code
 						className={`opacity-0 max-h-[260px] overflow-auto transition ease-in-out delay-150 ${expanded ? "opacity-100" : ""}`}
@@ -45,4 +43,3 @@ export function IntermediateStep(props: { message: Message }) {
 		</div>
 	)
 }
-
